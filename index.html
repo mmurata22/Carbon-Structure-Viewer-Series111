@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Structure Viewer - AR</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+  <style>
+    body { margin: 0; background-color: #f0f0f0; font-family: sans-serif; }
+    model-viewer { width: 100vw; height: 100vh; }
+
+    /* The Red Circle Button */
+    .Hotspot {
+      background: #FF2400;
+      border-radius: 32px;
+      border: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
+      cursor: pointer;
+      height: 24px;
+      padding: 8px;
+      position: relative;
+      transition: opacity 0.3s;
+      width: 24px;
+    }
+
+    .Hotspot:not([data-visible]) {
+      background: transparent;
+      border: 4px solid #fff;
+      box-shadow: none;
+      height: 32px;
+      pointer-events: none;
+      width: 32px;
+    }
+
+    .Hotspot:focus { border: 4px solid rgb(0, 128, 255); outline: none; }
+
+    /* The Label (100, 110, 111) */
+    .HotspotAnnotation {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      color: rgba(0, 0, 0, 0.8);
+      display: block;
+      font-family: Futura, Helvetica Neue, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      left: calc(100% + 1em);
+      max-width: 128px;
+      padding: 0.5em 1em;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: max-content;
+    }
+
+    /* AR Button styling */
+    #ar-button {
+      background-color: #FF2400;
+      border-radius: 8px;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <model-viewer 
+    src="Carbon Structure Viewer State 111.glb" 
+    ios-src="Carbon Structure Viewer State 111.usdz"
+    ar 
+    ar-modes="webxr scene-viewer quick-look" 
+    camera-controls 
+    tone-mapping="neutral" 
+    shadow-intensity="1">
+    <button slot="ar-button" id="ar-button">View in AR</button>
+  </model-viewer>
+</body>
+</html>
